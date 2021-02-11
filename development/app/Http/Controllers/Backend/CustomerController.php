@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\View;
 class CustomerController extends Controller
 {
     public function index(){
-        $customer = User :: all();
-        return view::make('backend.admin.customer.index', ['users' => $customer]);
+        $customer = User::Where('role_id',3)->OrderBy('id','desc')->paginate(3);
+        return view::make('backend.customer.index', ['users' => $customer]);
     }
     public function create(){
-        return view::make('backend.admin.customer.create');
+        return view::make('backend.customer.create');
     }
     public function store(Request $request){
         $request->validate([
@@ -38,15 +38,16 @@ class CustomerController extends Controller
         $customer->password = bcrypt($request->password);
         $customer->role_id = config('roles.role.customer');
         $customer->save();
+        return redirect()->route('customers.create')->with("Success","YOUR APPLICATION HAS BEEN SUBMITTED");
     }
     public function edit($id){
         $customer = User::find($id);
-        return view::make('backend.admin.customer.edit',['users' => $customer]);
+        return view::make('backend.customer.edit',['users' => $customer]);
     }
     public function update($id,Request $request){
         $request->validate([
             'name' => 'required|min:10|max:15',
-            'email' => 'required|min:9|max:30',
+            'email' => 'required|min:9|max:30|unique:users,email,'.$id,
             'password' => 'required|min:6|regex:/^.+@.+$/i|max:15',
             ],[
             'name.required' => 'Name is Required',
@@ -59,19 +60,20 @@ class CustomerController extends Controller
             'password.min' => 'Password should be atleast:min characters',
             'password.max' => 'Password should be atleast:max characters',
                 ]);
-        $customer = User :: find($request->id);
+        $customer = User::find($request->id);
         $customer->name = $request->name;
         $customer->email = $request->email;
         $customer->password = bcrypt($request->password);
         $customer->role_id = config('roles.role.customer');
         $customer->update();
-        return redirect()->route('customers.index');
+        return redirect()->route('customers.index')->with("Success","form have been submitted");
     }
     public function show(){
 
     }
     public function destroy($id){
-        $customer = User :: find($id);
+        $customer = User::find($id);
         $customer->delete();
+        return redirect()->route('customers.index');
     }
 }

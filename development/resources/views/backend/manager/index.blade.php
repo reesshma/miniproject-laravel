@@ -1,7 +1,7 @@
 @extends('application.layouts.app')
 @section('content')
-<h1 align="center"> ADMINISTARTION LIST </h1>
-<a href="{{route('admins.create')}}" >Go To Form</a>
+<h1 align="center"> MANAGER LIST </h1>
+<a href="{{route('managers.create')}}" >Go To Form</a><br><br>
 <table align="center" border="2">
     <tr>
         <th>ID</th>
@@ -13,15 +13,15 @@
     </tr>    
 
 
-    @forelse($users as $admin)
+    @forelse($users as $manager)
         <tr>
-            <td>{{$admin->id}}</td>
-            <td>{{$admin->name}}</td>
-            <td>{{$admin->email}}</td>
-            <td>{{$admin->role_id}}</td>
-            <td><a href ="{{route('admins.edit',$admin->id)}}">Edit</a></td>
+            <td>{{$manager->id}}</td>
+            <td>{{$manager->name}}</td>
+            <td>{{$manager->email}}</td>
+            <td>{{$manager->role_id}}</td>
+            <td><a href ="{{route('managers.edit',$manager->id)}}">Edit</a></td>
             <td>
-            <form method="post" action="{{route('admins.destroy',$admin->id)}}" >
+            <form method="post" action="{{route('managers.destroy',$manager->id)}}" >
             @csrf
             @method('DELETE')
             <input type="submit" value="delete"></td>

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\View;
 class AdminController extends Controller
 {
     public function index(){
-        $admin = User :: all();
+        $admin = User::Where('role_id',1)->OrderBy('id','desc')->paginate(3);
         return view::make('backend.admin.index', ['users' => $admin]);
     }
     public function create(){
@@ -38,7 +38,7 @@ class AdminController extends Controller
         $admin->password = bcrypt($request->password);
         $admin->role_id = config('roles.role.admin');
         $admin->save();
-        //return redirect()->route('products.index');
+        return redirect()->route('admins.index')->with("Success","YOUR APPLICATION HAS BEEN SUBMITTED");
     }
     public function edit($id){
         $admin = User::find($id);
@@ -47,7 +47,7 @@ class AdminController extends Controller
     public function update($id,Request $request){
         $request->validate([
             'name' => 'required|min:10|max:15',
-            'email' => 'required|min:9|max:30',
+            'email' => 'required|min:9|max:30|unique:users,email,'.$id,
             'password' => 'required|min:6|regex:/^.+@.+$/i|max:15',
             ],[
             'name.required' => 'Name is Required',
@@ -60,19 +60,21 @@ class AdminController extends Controller
             'password.min' => 'Password should be atleast:min characters',
             'password.max' => 'Password should be atleast:max characters',
                 ]);
-        $admin = User :: find($request->id);
+        $admin = User::find($request->id);
         $admin->name = $request->name;
         $admin->email = $request->email;
         $admin->password = bcrypt($request->password);
         $admin->role_id = config('roles.role.admin');
         $admin->update();
-        return redirect()->route('backend.admin.index');
+        return redirect()->route('admins.index')->with("Success","YOUR APPLICATION HAS BEEN SUBMITTED");
     }
     public function show(){
 
     }
     public function destroy($id){
-        $admin = User :: find($id);
+        $admin = User::find($id);
         $admin->delete();
+        return redirect()->route('admins.index');
+
     }
 }

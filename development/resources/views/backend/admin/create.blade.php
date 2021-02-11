@@ -73,5 +73,8 @@
         </div>
     </div>
 </div>
+@if(session("Success"))
+    <p> {{session("Success")}} </p>
+    @endif
 @endsection
 

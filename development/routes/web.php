@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\ManagerController;
+use App\Http\Controllers\Backend\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,17 @@ function (){
     Route::put('update/{id}', [ManagerController::class, 'update'])->name('update');
     Route::delete('destroy/{id}', [ManagerController::class, 'destroy'])->name('destroy');              
 });
+
+Route::group(['prefix' => 'products', 'as' => 'products.',],
+function (){
+    Route::get('index', [ProductController::class, 'index'])->name('index'); 
+    Route::get('create', [ProductController::class, 'create'])->name('create');  
+    Route::post('store', [ProductController::class, 'store'])->name('store'); 
+    Route::get('edit/{id}', [ProductController::class, 'edit'])->name('edit');
+    Route::put('update/{id}', [ProductController::class, 'update'])->name('update');
+    Route::delete('destroy/{id}', [ProductController::class, 'destroy'])->name('destroy');              
+});
+Route::get('list', [ProductController::class, 'list'])->name('list');  
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
