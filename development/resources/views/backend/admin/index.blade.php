@@ -1,7 +1,9 @@
 @extends('application.layouts.app')
 @section('content')
 <h1 align="center"> ADMINISTARTION LIST </h1>
-<a href="{{route('admins.create')}}" >Go To Form</a>
+<a href="{{route('admins.create')}}" >Add admins</a><br><br>
+<a href="{{route('managers.create')}}" >Add Managers</a><br><br>
+<a href="{{route('customers.create')}}" >Add customers</a>
 <table align="center" border="2">
     <tr>
         <th>ID</th>

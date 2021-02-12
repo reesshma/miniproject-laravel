@@ -73,7 +73,11 @@ class AdminController extends Controller
     }
     public function destroy($id){
         $admin = User::find($id);
-        $admin->delete();
+        if (!empty($admin)){
+            $admin->delete();
+            }else{
+    
+            }
         return redirect()->route('admins.index');
 
     }

@@ -44,25 +44,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="{{route('admins.index')}}" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Admin</p>
+                  <p>Administration</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('managers.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manager</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('customers.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Customer</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('products.index')}}"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Product Management</p>
                 </a>
@@ -71,92 +71,7 @@
           </li>
               
           
-          <li class="nav-item">
-            <a href="{{route('admins.index')}}" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Administration
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('managers.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manager</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('customers.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Customer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('products.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Product Management</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                 Manager
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('managers.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manager List</p>
-                </a>
-              </li>
-            </ul>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('customers.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Customers List</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Customers
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('customers.create')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Registration</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tree"></i>
-              <p>
-                Product Management
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('products.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Product List</p>
-                </a>
-              </li>
+          
           
           
          

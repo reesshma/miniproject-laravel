@@ -13,17 +13,38 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">ONLINE PURCHASE</a>
+    </div>
+    <form class="navbar-form navbar-right" action="/action_page.php">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" name="search">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
+
 <div class="container">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  
     <div class="row">
     @forelse($users as $product)
         <div class="col-md-4">
               <div class="thumbnail">
-              <img src="{{asset('storage/images/'.$product->product_image)}}" alt="" class="img-responsive">
-                <div class="caption">
-                    <h4 class="pull-right">RS:1000</h4>
-                    <h4><a href="#">PRODUCT</a></h4>
-                    <p> HURRY UP </P>
-                </div>
+                <h4 class="">{{$product->product_name}}</h4>
+                <h4 class="">{{$product->sku}}</h4>
+                <h4 class="">{{$product->quantity}}</h4>
+                <img src="{{asset('storage/images/'.$product->product_image)}}" style="width:50%;height:50%" class="img-responsive">
                
                 <div class="ratings">
                   <p>
@@ -37,15 +58,14 @@
                 </div>
                 <div class="space-ten"></div>
                 <div class="btn-ground text-center">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Purchase</button>
+                    <button type="button" class="btn btn-primary"><i class="fa fa-shopping-cart"></i><a href="{{route('products.purchase')}}">Purchase</a></button>
                 </div>
-               
-                <div class="space-ten"></div>
-               
+               <div class="space-ten"></div>
               </div>
-             
-            </div>
+        </div>
             @empty
             @endforelse
+            </div>
+            </div>
      </body>
 </html>

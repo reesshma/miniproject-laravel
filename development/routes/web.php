@@ -57,9 +57,13 @@ function (){
     Route::post('store', [ProductController::class, 'store'])->name('store'); 
     Route::get('edit/{id}', [ProductController::class, 'edit'])->name('edit');
     Route::put('update/{id}', [ProductController::class, 'update'])->name('update');
-    Route::delete('destroy/{id}', [ProductController::class, 'destroy'])->name('destroy');              
+    Route::delete('destroy/{id}', [ProductController::class, 'destroy'])->name('destroy');  
+    Route::get('list', [ProductController::class, 'list'])->name('list');  
+    Route::get('purchase', [ProductController::class, 'purchase'])->name('purchase');  
+    Route::post('click', [ProductController::class, 'click'])->name('click');             
 });
-Route::get('list', [ProductController::class, 'list'])->name('list');  
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

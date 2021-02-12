@@ -79,15 +79,25 @@ class ProductController extends Controller
 
     }
     public function show(){
-
+       
     }
     public function destroy(){
         $product = User::find($id);
-        $product->delete();
+        if (!empty($product)){
+            $product->delete();
+            }else{
+    
+            }
         return redirect()->route('products.index');
     }
     public function list(){
         $product = Product::all();
         return view::make('frontend.index',['users' => $product]);
+    }
+    public function purchase(){
+        return view::make('frontend.create');
+    }
+    public function click(){
+        return view::make('frontend.edit');
     }
 }
