@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 
 class LoginController extends Controller
 {
@@ -30,16 +32,16 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if (auth()->user()->role_id ==  config('roles.role.admin')) {
-            return '/admins/index';
+            return 'admins.index';
         }
         if (auth()->user()->role_id ==  config('roles.role.manager')) {
-            return '/managers/index';
+            return 'managers.index';
         }
         if (auth()->user()->role_id ==  config('roles.role.customer')) {
-            return '/customers/index';
+            return 'customers.create';
         }
         else {
-        return '/home';
+            
         }
     }
 

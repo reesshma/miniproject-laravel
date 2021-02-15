@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\ManagerController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\DetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ use App\Http\Controllers\Backend\ProductController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['prefix' => 'admins', 'as' => 'admins.', 'middleware' => 'auth', ],
+Route::group(['prefix' => 'admins', 'as' => 'admins.', 'middleware' => ['auth'] ],
 function (){
     Route::get('index', [AdminController::class, 'index'])->name('index'); 
     Route::get('create', [AdminController::class, 'create'])->name('create');  
@@ -30,7 +31,7 @@ function (){
     Route::delete('destroy/{id}', [AdminController::class, 'destroy'])->name('destroy');              
 });
 
-Route::group(['prefix' => 'customers', 'as' => 'customers.',],
+Route::group(['prefix' => 'customers', 'as' => 'customers.', 'middleware' => ['auth']],
 function (){
     Route::get('index', [CustomerController::class, 'index'])->name('index'); 
     Route::get('create', [CustomerController::class, 'create'])->name('create');  
@@ -40,7 +41,7 @@ function (){
     Route::delete('destroy/{id}', [CustomerController::class, 'destroy'])->name('destroy');              
 });
 
-Route::group(['prefix' => 'managers', 'as' => 'managers.',],
+Route::group(['prefix' => 'managers', 'as' => 'managers.', 'middleware' =>['auth']],
 function (){
     Route::get('index', [ManagerController::class, 'index'])->name('index'); 
     Route::get('create', [ManagerController::class, 'create'])->name('create');  
@@ -62,7 +63,10 @@ function (){
     Route::get('purchase', [ProductController::class, 'purchase'])->name('purchase');  
     Route::post('click', [ProductController::class, 'click'])->name('click');             
 });
-
+Route::group(['prefix' => 'details', 'as' => 'details.',],
+function (){
+Route::post('store', [DetailsController::class, 'store'])->name('store');  
+});
 
 Auth::routes();
 

@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('User Details') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{route('details.store')}}">
                         @csrf
 
                         <div class="form-group row">
@@ -28,6 +28,9 @@
                             <input id="checkbox" type="checkbox" />
                             <label for="checkbox"> I agree to these <a href="#">Terms and Conditions</a>.</label>
                         </div>
+                        <div class="col-12">        
+                            <button type="submit" style="align-center" class="btn btn-success">submit</button>
+                    </div>
                     </form>
                 </div>
             </div>
